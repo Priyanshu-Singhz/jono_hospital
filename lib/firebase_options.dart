@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCTCzQcA6fwM-2Fz2QSowLGOiO8kECIfOM',
-    appId: '1:359558977429:android:f855db07fb28e7b077889c',
+    appId: '1:359558977429:android:08ab2d512c1319d277889c',
     messagingSenderId: '359558977429',
     projectId: 'jono-queue',
     storageBucket: 'jono-queue.appspot.com',
@@ -59,12 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC8MVMgOuMB7u3ceaI4fXGlSEuaPmpETrs',
-    appId: '1:359558977429:ios:4d82421acc09ab4a77889c',
+    appId: '1:359558977429:ios:ec5acff7c821ca7e77889c',
     messagingSenderId: '359558977429',
     projectId: 'jono-queue',
     storageBucket: 'jono-queue.appspot.com',
     androidClientId: '359558977429-qn6dmcj0qmd4h15jo9poe09c8jgaakmt.apps.googleusercontent.com',
-    iosClientId: '359558977429-1ab4c3f4i8hmgi9opva33carv81kai8g.apps.googleusercontent.com',
-    iosBundleId: 'com.elysian.jono',
+    iosClientId: '359558977429-hbpgooq1vuiqumeincu5026t7455limt.apps.googleusercontent.com',
+    iosBundleId: 'com.elysian.jonoHospital',
   );
 }

@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           builder: (context, child) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: "Jono",
+              title: "Jono Hospital",
               theme: appTheme(),
               onGenerateRoute: MyRouter.generateRoute,
               initialRoute: HomeScreen.routeName,

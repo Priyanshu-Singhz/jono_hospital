@@ -1,4 +1,4 @@
-package com.example.jono_hospital
+package com.elysian.jono_hospital
 
 import io.flutter.embedding.android.FlutterActivity
 
