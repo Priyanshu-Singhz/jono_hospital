@@ -9,3 +9,4 @@ export './doctors/views/doctors_page.dart';
 export './doctors/views/add_new_doctor.dart';
 export './queue/views/queue.dart';
 export './profile/profile_page.dart';
+export './schedule/views/schedule.dart';
