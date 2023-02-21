@@ -1,9 +1,6 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import '../modules/modules.dart';
-import '../modules/profile/profile_page.dart';
 
 class MyRouter {
   static Route<dynamic> _errorRoute() {
@@ -44,6 +41,8 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => const DoctorsPage());
       case AddNewDoctor.routeName:
         return MaterialPageRoute(builder: (_) => const AddNewDoctor());
+      case QueuePage.routeName:
+        return MaterialPageRoute(builder: (_) => const QueuePage());
 
       default:
         return _errorRoute();

@@ -7,3 +7,5 @@ export './auth/views/signup_page.dart';
 export './bottom_view/views/bottom_view.dart';
 export './doctors/views/doctors_page.dart';
 export './doctors/views/add_new_doctor.dart';
+export './queue/views/queue.dart';
+export './profile/profile_page.dart';

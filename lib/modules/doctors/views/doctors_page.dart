@@ -52,8 +52,12 @@ class _DoctorsPageState extends State<DoctorsPage> {
                   return Column(
                     children: List.generate(
                       state.doctors.length,
-                      (index) => DoctorCard(
-                        doctor: state.doctors[index],
+                      (index) => InkWell(
+                        onTap: () =>
+                            Navigator.pushNamed(context, QueuePage.routeName),
+                        child: DoctorCard(
+                          doctor: state.doctors[index],
+                        ),
                       ),
                     ),
                   );
