@@ -1,16 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:jono_hospital/data/blocs/autocomplete/auto_complete_bloc.dart';
 import 'package:jono_hospital/data/blocs/places/places_bloc.dart';
 import 'package:jono_hospital/data/repositories/auth/auth_repository.dart';
 import 'package:jono_hospital/data/repositories/doctors/doctors_repository.dart';
 import 'package:jono_hospital/data/repositories/places/places_repository.dart';
+import 'package:jono_hospital/data/services/local/shared_service.dart';
 import 'package:jono_hospital/data/services/remote/firestore_service.dart';
 import 'package:jono_hospital/modules/auth/blocs/auth/auth_bloc.dart';
 import 'package:jono_hospital/modules/doctors/blocs/doctors/doctors_cubit.dart';
+
 import './common/constants/theme.dart';
 import './modules/modules.dart';
 import './routes/router.dart';
@@ -23,11 +27,18 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  bool isLoggedIn = await MySharedService().getSharedUserId() != null;
+  runApp(MyApp(
+    isLoggedIn: isLoggedIn,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+  const MyApp({
+    Key? key,
+    required this.isLoggedIn,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +97,8 @@ class MyApp extends StatelessWidget {
               title: "Jono Hospital",
               theme: appTheme(),
               onGenerateRoute: MyRouter.generateRoute,
-              initialRoute: SplashPage.routeName,
+              initialRoute:
+                  isLoggedIn ? BottomPage.routeName : SplashPage.routeName,
             );
           },
         ),

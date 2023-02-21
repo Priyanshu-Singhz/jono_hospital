@@ -102,22 +102,20 @@ class _AddNewDoctorState extends State<AddNewDoctor> {
                 ),
                 onPressed: () {
                   context.read<AddDoctorCubit>().addDoctor(
-                      DoctorProfile(
-                        doctorID: const Uuid().v4(),
-                        name: nameController.text.trim(),
-                        noOfStar: 0,
-                        photoUrl:
-                            'https://www.freepnglogos.com/uploads/doctor-png/doctor-bulk-billing-doctors-chapel-hill-health-care-medical-3.png',
-                        specialization: specController.text.trim(),
-                      ),
-                      '2VxrQcWZkyNGpou4dr9F4dVIOko1');
+                        DoctorProfile(
+                          doctorID: const Uuid().v4(),
+                          name: nameController.text.trim(),
+                          noOfStar: 0,
+                          photoUrl:
+                              'https://www.freepnglogos.com/uploads/doctor-png/doctor-bulk-billing-doctors-chapel-hill-health-care-medical-3.png',
+                          specialization: specController.text.trim(),
+                        ),
+                      );
                   nameController.clear();
                   specController.clear();
                   descController.clear();
 
-                  context
-                      .read<DoctorsCubit>()
-                      .getDoctors('2VxrQcWZkyNGpou4dr9F4dVIOko1');
+                  context.read<DoctorsCubit>().getDoctors();
                 },
                 child: state.isLoading
                     ? const CircularProgressIndicator()

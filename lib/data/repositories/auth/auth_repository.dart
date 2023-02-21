@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jono_hospital/common/errors/result_error.dart';
 import 'package:jono_hospital/common/typedefs/typedefs.dart';
 import 'package:jono_hospital/data/models/profile_model.dart';
+import 'package:jono_hospital/data/services/local/shared_service.dart';
 import 'package:jono_hospital/data/services/remote/firestore_service.dart';
 import 'package:multiple_result/multiple_result.dart';
 
@@ -22,6 +23,8 @@ class AuthRepository implements BaseAuthRepository {
       UserCredential credential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = credential.user;
+
+      await MySharedService().setSharedUserId(credential.user!.uid);
 
       return Success(user!);
     } on FirebaseAuthException catch (e) {
@@ -55,6 +58,8 @@ class AuthRepository implements BaseAuthRepository {
         name: name,
         uid: credential.user!.uid,
       ));
+
+      await MySharedService().setSharedUserId(credential.user!.uid);
 
       return Success(credential.user!);
     } on FirebaseAuthException catch (e) {

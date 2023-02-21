@@ -18,7 +18,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<DoctorsCubit>().getDoctors('2VxrQcWZkyNGpou4dr9F4dVIOko1');
+    context.read<DoctorsCubit>().getDoctors();
   }
 
   @override
@@ -30,10 +30,8 @@ class _DoctorsPageState extends State<DoctorsPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          return Future.delayed(const Duration(seconds: 1)).then((value) =>
-              context
-                  .read<DoctorsCubit>()
-                  .getDoctors('2VxrQcWZkyNGpou4dr9F4dVIOko1'));
+          return Future.delayed(const Duration(seconds: 1))
+              .then((value) => context.read<DoctorsCubit>().getDoctors());
         },
         child: ListView(
           children: [
