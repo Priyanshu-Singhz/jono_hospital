@@ -5,6 +5,12 @@ import './colors.dart';
 
 ThemeData appTheme() {
   return ThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: AppColors.primaryColor),
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      backgroundColor: AppColors.primaryColor,
+    ),
     primaryColor: AppColors.primaryColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
@@ -32,5 +38,7 @@ ThemeData appTheme() {
         elevation: 0,
       ),
     ),
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: AppColors.whiteColor),
   );
 }

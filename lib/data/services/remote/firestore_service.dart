@@ -1,14 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jono_hospital/data/models/profile_model.dart';
+import 'package:jono_hospital/modules/doctors/models/doctor_profile.dart';
 
 class FireStoreService {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-
-  Future<void> createUserProfile(UserProfileModel userProfileModel) async {
-    await _firebaseFirestore.collection('users').doc(userProfileModel.uid).set(
-          userProfileModel.toMap(),
-        );
-  }
 
   Future<void> createHospitalProfile(
       HospitalProfileModel hospitalProfileModel) async {
@@ -18,5 +13,29 @@ class FireStoreService {
         .set(
           hospitalProfileModel.toMap(),
         );
+  }
+
+  Future<void> addDoctor(DoctorProfile doctorProfile, String hospitalID) async {
+    await _firebaseFirestore
+        .collection('hospitals')
+        .doc(hospitalID)
+        .collection('doctors')
+        .doc()
+        .set(doctorProfile.toMap());
+  }
+
+  Future<List<DoctorProfile>> getDoctors(String hospitalID) async {
+    List<DoctorProfile> doctors = [];
+    final doctorRef = await _firebaseFirestore
+        .collection('hospitals')
+        .doc(hospitalID)
+        .collection('doctors')
+        .get();
+
+    for (var element in doctorRef.docs) {
+      doctors.add(DoctorProfile.fromMap(element.data()));
+    }
+
+    return doctors;
   }
 }

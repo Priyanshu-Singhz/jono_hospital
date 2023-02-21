@@ -6,9 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jono_hospital/data/blocs/autocomplete/auto_complete_bloc.dart';
 import 'package:jono_hospital/data/blocs/places/places_bloc.dart';
 import 'package:jono_hospital/data/repositories/auth/auth_repository.dart';
+import 'package:jono_hospital/data/repositories/doctors/doctors_repository.dart';
 import 'package:jono_hospital/data/repositories/places/places_repository.dart';
 import 'package:jono_hospital/data/services/remote/firestore_service.dart';
 import 'package:jono_hospital/modules/auth/blocs/auth/auth_bloc.dart';
+import 'package:jono_hospital/modules/doctors/blocs/doctors/doctors_cubit.dart';
 import './common/constants/theme.dart';
 import './modules/modules.dart';
 import './routes/router.dart';
@@ -42,6 +44,10 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (_) => PlacesRepository(),
         ),
+        RepositoryProvider(
+          create: (_) =>
+              DoctorsRepository(fireStoreService: FireStoreService()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -65,6 +71,10 @@ class MyApp extends StatelessWidget {
               placesRepository: context.read<PlacesRepository>(),
             ),
           ),
+          BlocProvider(
+            create: (context) => DoctorsCubit(
+                doctorsRepository: context.read<DoctorsRepository>()),
+          ),
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 800),
@@ -76,7 +86,7 @@ class MyApp extends StatelessWidget {
               title: "Jono Hospital",
               theme: appTheme(),
               onGenerateRoute: MyRouter.generateRoute,
-              initialRoute: HomeScreen.routeName,
+              initialRoute: SplashPage.routeName,
             );
           },
         ),

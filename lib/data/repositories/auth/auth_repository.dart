@@ -42,7 +42,6 @@ class AuthRepository implements BaseAuthRepository {
     String name,
     String email,
     String password,
-    bool isHospital,
   ) async {
     try {
       final credential =
@@ -51,19 +50,11 @@ class AuthRepository implements BaseAuthRepository {
         password: password,
       );
 
-      if (!isHospital) {
-        await fireStoreService.createUserProfile(UserProfileModel(
-          email: email,
-          name: name,
-          uid: credential.user!.uid,
-        ));
-      } else {
-        await fireStoreService.createHospitalProfile(HospitalProfileModel(
-          email: email,
-          name: name,
-          uid: credential.user!.uid,
-        ));
-      }
+      await fireStoreService.createHospitalProfile(HospitalProfileModel(
+        email: email,
+        name: name,
+        uid: credential.user!.uid,
+      ));
 
       return Success(credential.user!);
     } on FirebaseAuthException catch (e) {

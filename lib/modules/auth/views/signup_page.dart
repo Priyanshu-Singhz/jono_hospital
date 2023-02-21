@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +8,6 @@ import 'package:jono_hospital/common/extensions/context_ext.dart';
 import 'package:jono_hospital/common/utils/utils.dart';
 import 'package:jono_hospital/common/widgets/common_textfield.dart';
 import 'package:jono_hospital/modules/auth/blocs/auth/auth_bloc.dart';
-import 'package:jono_hospital/modules/home/views/home.dart';
 import 'package:jono_hospital/modules/modules.dart';
 
 class SignupPage extends StatefulWidget {
@@ -26,7 +24,6 @@ class _SignupPageState extends State<SignupPage> {
   late TextEditingController passwordController;
 
   bool isTermsAndCondition = false;
-  bool isHospital = false;
 
   @override
   void initState() {
@@ -79,8 +76,8 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 40),
               CommonTextField(
                 controller: nameController,
-                hintText: 'Enter your name',
-                prefixIcon: const Icon(Icons.person_2),
+                hintText: 'Enter Hospital Name',
+                prefixIcon: const Icon(Icons.local_hospital_rounded),
               ),
               const SizedBox(height: 16),
               CommonTextField(
@@ -160,19 +157,19 @@ class _SignupPageState extends State<SignupPage> {
                 builder: (context, state) {
                   log(state.toString());
                   return ElevatedButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              SignUpEvent(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
-                                name: nameController.text.trim(),
-                                isHospital: isHospital,
-                              ),
-                            );
-                      },
-                      child: state is AuthLoadingState
-                          ? CommonUtilities.loading()
-                          : const Text('Sign Up'));
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                            SignUpEvent(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              name: nameController.text.trim(),
+                            ),
+                          );
+                    },
+                    child: state is AuthLoadingState
+                        ? CommonUtilities.loading()
+                        : const Text('Sign Up'),
+                  );
                 },
               ),
               const SizedBox(height: 32),

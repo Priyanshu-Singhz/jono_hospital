@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jono_hospital/common/constants/colors.dart';
 import 'package:jono_hospital/modules/bottom_view/bloc/bottom_nav_bloc.dart';
+import 'package:jono_hospital/modules/doctors/views/doctors_page.dart';
 import 'package:jono_hospital/modules/home/views/home.dart';
 
 class BottomPage extends StatelessWidget {
@@ -22,11 +23,7 @@ class BottomPage extends StatelessWidget {
                 index: state.currentIndex,
                 children: const [
                   HomeScreen(),
-                  Scaffold(
-                    body: Center(
-                      child: Text('Doctor'),
-                    ),
-                  ),
+                  DoctorsPage(),
                   Scaffold(
                     body: Center(
                       child: Text('Appointments'),
@@ -89,7 +86,7 @@ class BottomNavBar extends StatelessWidget {
       case 0:
         return 'assets/svgs/Home.svg';
       case 1:
-        return 'assets/svgs/Message.svg';
+        return 'assets/svgs/doctor.svg';
       case 2:
         return 'assets/svgs/Calendar.svg';
       default:

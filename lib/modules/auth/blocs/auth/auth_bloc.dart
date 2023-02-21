@@ -38,8 +38,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _handleSignUpEvent(
       SignUpEvent event, Emitter<AuthState> emit) async {
     emit(AuthLoadingState());
-    var response = await _authRepository.signUp(
-        event.name, event.email, event.password, event.isHospital);
+    var response =
+        await _authRepository.signUp(event.name, event.email, event.password);
 
     response.when(
       (success) => emit(AuthSignedInState(user: success)),

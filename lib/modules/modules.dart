@@ -5,3 +5,5 @@ export './splash/views/landing_page.dart';
 export './auth/views/login_page.dart';
 export './auth/views/signup_page.dart';
 export './bottom_view/views/bottom_view.dart';
+export './doctors/views/doctors_page.dart';
+export './doctors/views/add_new_doctor.dart';

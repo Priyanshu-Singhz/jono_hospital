@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:jono_hospital/modules/splash/views/onboarding_page.dart';
 
 import '../modules/modules.dart';
 import '../modules/profile/profile_page.dart';
@@ -41,6 +40,10 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => const SignupPage());
       case BottomPage.routeName:
         return MaterialPageRoute(builder: (_) => const BottomPage());
+      case DoctorsPage.routeName:
+        return MaterialPageRoute(builder: (_) => const DoctorsPage());
+      case AddNewDoctor.routeName:
+        return MaterialPageRoute(builder: (_) => const AddNewDoctor());
 
       default:
         return _errorRoute();
