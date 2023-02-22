@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:jono_hospital/data/blocs/autocomplete/auto_complete_bloc.dart';
 import 'package:jono_hospital/data/blocs/places/places_bloc.dart';
 import 'package:jono_hospital/data/repositories/auth/auth_repository.dart';
@@ -14,7 +13,6 @@ import 'package:jono_hospital/data/services/local/shared_service.dart';
 import 'package:jono_hospital/data/services/remote/firestore_service.dart';
 import 'package:jono_hospital/modules/auth/blocs/auth/auth_bloc.dart';
 import 'package:jono_hospital/modules/doctors/blocs/doctors/doctors_cubit.dart';
-
 import './common/constants/theme.dart';
 import './modules/modules.dart';
 import './routes/router.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jono_hospital/common/constants/colors.dart';
+import 'package:jono_hospital/modules/modules.dart';
 
 class QueuePage extends StatelessWidget {
   static const String routeName = '/queuePage-page';
@@ -21,7 +22,11 @@ class QueuePage extends StatelessWidget {
                     'Today’s Queue',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const Icon(Icons.more_vert)
+                  InkWell(
+                    child: const Icon(Icons.more_vert),
+                    onTap: () =>
+                        Navigator.pushNamed(context, SchedulePage.routeName),
+                  )
                 ],
               ),
               Expanded(
