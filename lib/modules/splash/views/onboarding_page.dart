@@ -53,7 +53,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 27),
                       child: Column(
                         children: [
-                          Image.asset(item.imageUrl!),
+                          Image.asset(
+                            item.imageUrl!,
+                            scale: 4,
+                          ),
                           const SizedBox(
                             height: 40,
                           ),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jono_hospital/data/models/profile_model.dart';
 import 'package:jono_hospital/modules/doctors/models/doctor_profile.dart';
 
@@ -13,6 +14,13 @@ class FireStoreService {
         .set(
           hospitalProfileModel.toMap(),
         );
+  }
+
+  Future<void> updateHospitalLocaltion(LatLng latLng, String uid) async {
+    await _firebaseFirestore.collection('hospitals').doc(uid).update({
+      'lat': latLng.latitude,
+      'lng': latLng.longitude,
+    });
   }
 
   Future<void> addDoctor(DoctorProfile doctorProfile, String hospitalID) async {

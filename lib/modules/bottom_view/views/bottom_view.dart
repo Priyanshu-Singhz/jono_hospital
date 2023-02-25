@@ -24,11 +24,7 @@ class BottomPage extends StatelessWidget {
                 children: const [
                   HomeScreen(),
                   DoctorsPage(),
-                  Scaffold(
-                    body: Center(
-                      child: Text('Profile'),
-                    ),
-                  ),
+                  ProfilePage(),
                 ],
               );
             }

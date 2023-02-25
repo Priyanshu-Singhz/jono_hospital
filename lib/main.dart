@@ -11,6 +11,7 @@ import 'package:jono_hospital/data/repositories/auth/auth_repository.dart';
 import 'package:jono_hospital/data/repositories/doctors/doctors_repository.dart';
 import 'package:jono_hospital/data/repositories/places/places_repository.dart';
 import 'package:jono_hospital/data/services/local/shared_service.dart';
+import 'package:jono_hospital/data/services/remote/firebase_auth_service.dart';
 import 'package:jono_hospital/data/services/remote/firestore_service.dart';
 import 'package:jono_hospital/modules/auth/blocs/auth/auth_bloc.dart';
 import 'package:jono_hospital/modules/doctors/blocs/doctors/doctors_cubit.dart';
@@ -64,6 +65,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => GeolocationBloc(
+              authService: FirebaseAuthService(),
+              fireStoreService: FireStoreService(),
               geolocationRepository: context.read<GeolocationRepository>(),
             )..add(LoadGeolocationEvent()),
           ),
